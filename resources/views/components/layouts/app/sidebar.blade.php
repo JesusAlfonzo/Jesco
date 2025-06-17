@@ -41,14 +41,14 @@
                     {{-- Modulo de Laboratorio --}}
                     <flux:navlist.group heading="Laboratorio" expandable data-group-id="laboratorio">
                         <flux:navlist.item icon="test-tube" href="{{ route('examenes') }}">Lista de Exámenes</flux:navlist.item>
-                        <flux:navlist.item icon="grid-2x2-plus" href="#">Registrar Examen</flux:navlist.item>
+                        <flux:navlist.item icon="grid-2x2-plus" href="{{ route('registrar-examen') }}">Registrar Examen</flux:navlist.item>
                         <flux:navlist.item icon="person-standing" href="{{ route('pacientes') }}">Pacientes</flux:navlist.item>
                     </flux:navlist.group>
 
                     {{-- Modulo de Empleados --}}
                     <flux:navlist.group heading="Empleados" expandable data-group-id="empleados">
-                        <flux:navlist.item icon="id-card-lanyard" href="#">Lista de Empleados</flux:navlist.item>
-                        <flux:navlist.item icon="user-round-plus" href="#">Registrar Empleado</flux:navlist.item>
+                        <flux:navlist.item icon="id-card-lanyard" href="{{ route('empleados') }}">Lista de Empleados</flux:navlist.item>
+                        <flux:navlist.item icon="user-round-plus" href="{{ route('registrar-empleado') }}">Registrar Empleado</flux:navlist.item>
                         <flux:navlist.item icon="history" href="#">Historial Laboral</flux:navlist.item>
                     </flux:navlist.group>
 

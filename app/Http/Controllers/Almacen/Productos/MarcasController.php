@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class MarcasController extends Controller
 {
-    public function __invoke(Request $request)
+    public function index(Request $request)
     {
         // Aquí puedes manejar la lógica para las marcas de productos
         // Por ejemplo, retornar una vista o procesar datos

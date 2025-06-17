@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class ImpuestoController extends Controller
 {
-    public function __invoke(Request $request)
+    public function index(Request $request)
     {
         // Aquí puedes agregar la lógica para manejar la solicitud
         // Por ejemplo, cargar datos de la base de datos o procesar formularios

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
 {
-    public function __invoke(Request $request)
+    public function index(Request $request)
     {
         // Aquí puedes manejar la lógica para la categoría de productos
         // Por ejemplo, retornar una vista o procesar datos

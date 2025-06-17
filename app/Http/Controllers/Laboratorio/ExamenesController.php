@@ -7,8 +7,13 @@ use Illuminate\Http\Request;
 
 class ExamenesController extends Controller
 {
-    public function __invoke(Request $request)
+    public function index(Request $request)
     {
         return view('Laboratorio.examenes');
+    }
+    
+    public function create(Request $request)
+    {
+        return view('Laboratorio.registrar-examen');
     }
 }

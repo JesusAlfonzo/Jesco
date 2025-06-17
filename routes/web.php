@@ -1,17 +1,20 @@
 <?php
 
-use App\Http\Controllers\Compras\OrdenCompraController;
-use App\Http\Controllers\Compras\DetalleCompraController;
+// use App\Http\Controllers\Compras\OrdenCompraController;
+// use App\Http\Controllers\Compras\DetalleCompraController;
 use App\Http\Controllers\Compras\ProveedorController;
 use App\Http\Controllers\Compras\ImpuestoController;
 use App\Http\Controllers\Almacen\InventarioController;
-use App\Http\Controllers\Almacen\Productos\ListaProductosController;
+use App\Http\Controllers\Almacen\Productos\ProductoController;
 use App\Http\Controllers\Almacen\Productos\PresentacionController;
 use App\Http\Controllers\Almacen\Productos\CategoriaController;
 use App\Http\Controllers\Almacen\Productos\MarcasController;
 use App\Http\Controllers\Almacen\Productos\UnidadesMedidaController;
+use App\Http\Controllers\Compras\CompraController;
+use App\Http\Controllers\Compras\DetalleCompraController;
 use App\Http\Controllers\Laboratorio\ExamenesController;
 use App\Http\Controllers\Laboratorio\PacientesController;
+use App\Http\Controllers\Empleados\EmpleadosController;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
@@ -29,23 +32,20 @@ Route::view('dashboard', 'dashboard')
     
 // Modulo de Compras
 
-    // Orden de Compra
-    Route::get('orden-de-compra', OrdenCompraController::class)
-        ->middleware(['auth', 'verified'])
+    Route::prefix('compras')->group(function () {
+    Route::get('orden-de-compra', [CompraController::class, 'index'])->middleware(['auth', 'verified'])
         ->name('orden-de-compra');
-
-    // Detalle de Compra
-    Route::get('detalle-de-compra', DetalleCompraController::class)
-        ->middleware(['auth', 'verified'])
+    Route::get('detalle-de-compra', [CompraController::class, 'show'])->middleware(['auth', 'verified'])
         ->name('detalle-de-compra');
+});
 
     // Proveedores
-    Route::get('proveedores', ProveedorController::class)
+    Route::get('proveedores', [ProveedorController::class, 'index'])
         ->middleware(['auth', 'verified'])
         ->name('proveedores');
 
     // Impuestos
-    Route::get('impuestos', ImpuestoController::class)
+    Route::get('impuestos', [ImpuestoController::class, 'index'])
         ->middleware(['auth', 'verified'])
         ->name('impuestos');
 
@@ -54,32 +54,32 @@ Route::view('dashboard', 'dashboard')
 // Modulo de Almacen
 
     // Inventario
-    Route::get('inventario', InventarioController::class)
+    Route::get('inventario', [InventarioController::class, 'index'])
         ->middleware(['auth', 'verified'])
         ->name('inventario');
 
     // Lista de Productos
-    Route::get('lista-de-productos', ListaProductosController::class)
+    Route::get('lista-de-productos', [ProductoController::class, 'index'])
         ->middleware(['auth', 'verified'])
         ->name('lista-de-productos');
 
     // Presentacion de Productos
-    Route::get('presentacion', PresentacionController::class)
+    Route::get('presentacion', [PresentacionController::class, 'index'])
         ->middleware(['auth', 'verified'])
         ->name('presentacion');
 
     // Categoria de Productos
-    Route::get('categoria', CategoriaController::class)
+    Route::get('categoria', [CategoriaController::class, 'index'])
         ->middleware(['auth', 'verified'])
         ->name('categoria');
 
     // Marcas de Productos
-    Route::get('marcas', MarcasController::class)
+    Route::get('marcas', [MarcasController::class, 'index'])
         ->middleware(['auth', 'verified'])
         ->name('marcas');
 
     // Unidades de Medida
-    Route::get('unidades-de-medida', UnidadesMedidaController::class)
+    Route::get('unidades-de-medida', [UnidadesMedidaController::class, 'index'])
         ->middleware(['auth', 'verified'])
         ->name('unidades-de-medida');
 
@@ -87,14 +87,34 @@ Route::view('dashboard', 'dashboard')
 // Modulo de Laboratorio
 
     // Examenes
-    Route::get('examenes', ExamenesController::class)
+
+    Route::prefix('examen')->group(function(){
+        Route::get('examenes', [ExamenesController::class, 'index'])
         ->middleware(['auth', 'verified'])
         ->name('examenes');
 
+        Route::get('registrar-examen', [ExamenesController::class, 'create'])
+        ->middleware(['auth', 'verified'])
+        ->name('registrar-examen');
+    });
+    
+
     // Pacientes
-    Route::get('pacientes', PacientesController::class)
+    Route::get('pacientes', [PacientesController::class, 'index'])
         ->middleware(['auth', 'verified'])
         ->name('pacientes');
+
+
+// Modulo de Empleados
+
+    // Lista de Empleados
+    Route::get('empleados', [EmpleadosController::class, 'index'])
+        ->middleware(['auth', 'verified'])
+        ->name('empleados');
+
+    Route::get('registrar-empleado', [EmpleadosController::class, 'create'])
+        ->middleware(['auth', 'verified'])
+        ->name('registrar-empleado');
 
 
 // Settings

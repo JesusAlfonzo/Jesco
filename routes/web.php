@@ -1,7 +1,5 @@
 <?php
 
-// use App\Http\Controllers\Compras\OrdenCompraController;
-// use App\Http\Controllers\Compras\DetalleCompraController;
 use App\Http\Controllers\Compras\ProveedorController;
 use App\Http\Controllers\Compras\ImpuestoController;
 use App\Http\Controllers\Almacen\InventarioController;
@@ -11,10 +9,11 @@ use App\Http\Controllers\Almacen\Productos\CategoriaController;
 use App\Http\Controllers\Almacen\Productos\MarcasController;
 use App\Http\Controllers\Almacen\Productos\UnidadesMedidaController;
 use App\Http\Controllers\Compras\CompraController;
-use App\Http\Controllers\Compras\DetalleCompraController;
 use App\Http\Controllers\Laboratorio\ExamenesController;
 use App\Http\Controllers\Laboratorio\PacientesController;
 use App\Http\Controllers\Empleados\EmpleadosController;
+use App\Http\Controllers\Departamentos\DepartamentoController;
+use App\Http\Controllers\Roles\RolController;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
@@ -115,6 +114,31 @@ Route::view('dashboard', 'dashboard')
     Route::get('registrar-empleado', [EmpleadosController::class, 'create'])
         ->middleware(['auth', 'verified'])
         ->name('registrar-empleado');
+
+
+// Modulo de Departamentos
+
+    // Lista de Departamentos
+    Route::get('departamentos', [DepartamentoController::class, 'index'])
+        ->middleware(['auth', 'verified'])
+        ->name('departamentos');
+
+    Route::get('registrar-departamento', [DepartamentoController::class, 'create'])
+        ->middleware(['auth', 'verified'])
+        ->name('registrar-departamento');
+
+
+// Modulo de roles
+
+        Route::get('roles', [RolController::class, 'index'])
+            ->middleware(['auth', 'verified'])
+            ->name('roles');
+
+        Route::get('registrar-rol', [RolController::class, 'create'])
+            ->middleware(['auth', 'verified'])
+            ->name('registrar-rol');
+
+
 
 
 // Settings

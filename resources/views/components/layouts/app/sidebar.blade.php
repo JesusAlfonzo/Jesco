@@ -54,8 +54,8 @@
 
                     {{-- Modulo de Departamentos --}}
                     <flux:navlist.group heading="Departamentos" expandable data-group-id="departamentos">
-                        <flux:navlist.item icon="building" href="#">Lista de Departamentos</flux:navlist.item>
-                        <flux:navlist.item icon="house-plus" href="#">Registrar Departamento</flux:navlist.item>
+                        <flux:navlist.item icon="building" href="{{ route('departamentos') }}">Lista de Departamentos</flux:navlist.item>
+                        <flux:navlist.item icon="house-plus" href="{{ route('registrar-departamento') }}">Registrar Departamento</flux:navlist.item>
                         <flux:navlist.item icon="history" href="#">Historial de Departamentos</flux:navlist.item>
                     </flux:navlist.group>
 
@@ -67,8 +67,8 @@
 
                     {{-- Modulo de Roles --}}
                     <flux:navlist.group heading="Roles" expandable data-group-id="roles">
-                        <flux:navlist.item icon="user" href="#">Lista de Roles</flux:navlist.item>
-                        <flux:navlist.item icon="user-plus" href="#">Registrar Rol</flux:navlist.item>
+                        <flux:navlist.item icon="user" href="{{ route('roles') }}">Lista de Roles</flux:navlist.item>
+                        <flux:navlist.item icon="user-plus" href="{{ route('registrar-rol') }}">Registrar Rol</flux:navlist.item>
                     </flux:navlist.group>
 
                 </flux:navlist.group>
